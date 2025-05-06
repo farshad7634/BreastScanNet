@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 
+def get_model(num_classes=3):
+    return BreastCancerClassifier(num_classes=num_classes)
 class BreastCancerClassifier(nn.Module):
     def __init__(self, num_classes=3):
         super(BreastCancerClassifier, self).__init__()

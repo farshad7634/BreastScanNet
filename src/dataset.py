@@ -14,7 +14,6 @@ class BreastCancerSonogramDataset(Dataset):
                 ...
             malignant/
                 img3.png
-
                 img4.png
                 ...
             normal/
@@ -54,7 +53,6 @@ class BreastCancerSonogramDataset(Dataset):
         if self.transform:
             img = self.transform(img)
 
-      
         return img, label
 
 
@@ -66,7 +64,10 @@ if __name__ == '__main__':
         transforms.Normalize(mean=[0.5], std=[0.5])  # grayscale mean/std
     ])
 
-    data_dir = r"E:\Projects\BreastScanNet\BreastScanNet VS code\data"
+    # Generalized data directory path
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(script_dir, '..', 'data')
+
     dataset = BreastCancerSonogramDataset(data_dir, transform=transform)
     dataloader = DataLoader(dataset, batch_size=16, shuffle=True, num_workers=4)
 
